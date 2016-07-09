@@ -1,0 +1,44 @@
+<html>
+<header>
+<script src="singleton.js" type="text/javascript"></script>
+<script src="MyApp.js" type="text/javascript"></script>
+<script src="AOP.js" type="text/javascript"></script>
+<script src="curry.js" type="text/javascript"></script>
+<script>
+	function classStyleSingleton()
+	{
+		console.log(Singleton.getInstance("s1")===Singleton.getInstance("s2"));
+	}
+	function createNamespace()
+	{
+		console.log(MyApp.namespace("a.b")==null);
+	}
+	function AOP()
+	{
+		var Me=this;
+		var fn=function(){
+			console.log("fn");
+		};
+		
+		fn=fn.before(function(){
+			console.log("beforefn");
+		});
+		
+		fn();
+	}
+	function concretCurry(){
+		cost(100);
+		cost(200);
+		cost(300);
+		console.log(cost());
+	}
+</script>
+</header>
+<body>
+	<button type="button"  onclick="classStyleSingleton()">Class style singleton</button>
+	<button type="button">common style singleton</button>
+	<button type="button"  onclick="createNamespace()">Create namespace</button>
+	<button type="button"  onclick="AOP()">AOP</button>
+	<button type="button"  onclick="concretCurry()">Concret Curry</button>
+</body>
+</html>
